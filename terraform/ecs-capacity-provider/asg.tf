@@ -120,7 +120,7 @@ module "asg" {
       delete_on_termination = true
       description           = "eth0"
       device_index          = 0
-      security_groups       = concat(var.security_group_ids, var.create_security_group ? [module.security_group[0].security_group_id] : [])
+      security_groups       = concat(var.security_group_ids ? var.security_group_ids : [], var.create_security_group ? [module.security_group[0].security_group_id] : [])
     },
   ]
 
