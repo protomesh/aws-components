@@ -16,7 +16,7 @@ module "ecs" {
   autoscaling_capacity_providers = {
     for name, capacity_provider in var.capacity_providers :
     name => {
-      auto_scaling_group_arn         = capacity_provider.autoscaling_group_arn
+      auto_scaling_group_arn         = module.capacity_providers[name].autoscaling_group_arn
       managed_termination_protection = "ENABLED"
 
       managed_scaling = {
