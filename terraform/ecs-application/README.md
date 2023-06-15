@@ -9,7 +9,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.67.0 |
 
 ## Modules
 
@@ -49,7 +49,7 @@
 | <a name="input_ingress_with_cidr_blocks"></a> [ingress\_with\_cidr\_blocks](#input\_ingress\_with\_cidr\_blocks) | Ingress rules to add to the security group | <pre>list(object({<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>    description = optional(string)<br>    cidr_blocks = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_log_retention_in_days"></a> [log\_retention\_in\_days](#input\_log\_retention\_in\_days) | Days for log retention in CW, must be one of [0 1 3 5 7 14 30 60 90 120 150 180 365 400 545 731 1827 2192 2557 2922 3288 3653] | `number` | `7` | no |
 | <a name="input_name"></a> [name](#input\_name) | An user-friendly name to identify resources | `string` | n/a | yes |
-| <a name="input_service"></a> [service](#input\_service) | Service configuration | <pre>object({<br>    nlb_target_container_name = string<br>    nlb_target_container_port = number<br>  })</pre> | <pre>{<br>  "container_name": "default",<br>  "container_port": 443<br>}</pre> | no |
+| <a name="input_service"></a> [service](#input\_service) | Service configuration | <pre>object({<br>    nlb_target_container_name = string<br>    nlb_target_container_port = number<br>    nlb_subnet_ids            = list(string)<br>    task_subnet_ids           = list(string)<br>  })</pre> | <pre>{<br>  "nlb_subnet_ids": [],<br>  "nlb_target_container_name": "default",<br>  "nlb_target_container_port": 443,<br>  "task_subnet_ids": []<br>}</pre> | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Subnets IDs to place the service | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to add the resources managed by Terraform | `map(string)` | `{}` | no |
 | <a name="input_task_iam_policy"></a> [task\_iam\_policy](#input\_task\_iam\_policy) | Task IAM policy, allowing application to do operations on AWS services | `any` | n/a | yes |
@@ -59,6 +59,6 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_nlb_front_proxy_dns_name"></a> [nlb\_front\_proxy\_dns\_name](#output\_nlb\_front\_proxy\_dns\_name) | NLB for front-proxy DNS name |
+| <a name="output_nlb_dns_name"></a> [nlb\_dns\_name](#output\_nlb\_dns\_name) | NLB for front-proxy DNS name |
 | <a name="output_task_role_arn"></a> [task\_role\_arn](#output\_task\_role\_arn) | Task role arn |
 <!-- END_TF_DOCS -->

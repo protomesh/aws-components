@@ -13,8 +13,8 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_capacity_providers"></a> [capacity\_providers](#module\_capacity\_providers) | ../capacity-provider | n/a |
-| <a name="module_ecs"></a> [ecs](#module\_ecs) | terraform-aws-modules/ecs/aws | ~> 4.0 |
+| <a name="module_capacity_providers"></a> [capacity\_providers](#module\_capacity\_providers) | ../ecs-capacity-provider | n/a |
+| <a name="module_ecs"></a> [ecs](#module\_ecs) | terraform-aws-modules/ecs/aws | ~> 5.2.0 |
 | <a name="module_task_execution_iam_policy"></a> [task\_execution\_iam\_policy](#module\_task\_execution\_iam\_policy) | terraform-aws-modules/iam/aws//modules/iam-policy | ~> 5.0 |
 | <a name="module_task_execution_role"></a> [task\_execution\_role](#module\_task\_execution\_role) | terraform-aws-modules/iam/aws//modules/iam-assumable-role | ~> 5.0 |
 
