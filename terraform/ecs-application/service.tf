@@ -63,7 +63,7 @@ resource "aws_ecs_service" "service" {
     for_each = var.capacity_providers
 
     content {
-      capacity_provider = capacity_provider_strategy.key
+      capacity_provider = var.cluster.capacity_providers[capacity_provider_strategy.key].name
       weight            = capacity_provider_strategy.value["weight"]
       base              = capacity_provider_strategy.value["base"]
     }

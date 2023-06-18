@@ -65,11 +65,6 @@ variable "container_definitions" {
   description = "AWS ECS container definitions for this application (you can use this module: https://github.com/terraform-aws-modules/terraform-aws-ecs/blob/master/modules/container-definition)."
 }
 
-variable "subnet_ids" {
-  type        = list(string)
-  description = "Subnets IDs to place the service"
-}
-
 variable "enable_network_lb" {
   type        = bool
   description = "Enables network load balancer to expose the service (service must be enabled)"
@@ -78,9 +73,9 @@ variable "enable_network_lb" {
 
 variable "service" {
   type = object({
-    nlb_target_container_name = string
-    nlb_target_container_port = number
-    nlb_subnet_ids            = list(string)
+    nlb_target_container_name = optional(string)
+    nlb_target_container_port = optional(number)
+    nlb_subnet_ids            = optional(list(string))
     task_subnet_ids           = list(string)
   })
   description = "Service configuration"
