@@ -1,7 +1,3 @@
-variable "workspace_name" {
-  type = string
-}
-
 variable "name" {
   type        = string
   description = "An user-friendly name to identify resources"
