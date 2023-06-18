@@ -47,6 +47,7 @@ module "asg" {
   name    = local.base_name
 
   ignore_desired_capacity_changes = true
+  protect_from_scale_in           = true
 
   key_name = var.ssh_key_name
 
