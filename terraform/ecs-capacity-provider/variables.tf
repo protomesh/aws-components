@@ -1,7 +1,5 @@
-variable "workspace" {
-  type = object({
-    env_name = string
-  })
+variable "workspace_name" {
+  type = string
 }
 
 variable "name" {

@@ -2,10 +2,10 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 locals {
-  base_name = "${var.workspace.env_name}-${var.name}"
+  base_name = "${var.workspace_name}-${var.name}"
 
   tags = merge({
-    Environment  = var.workspace.env_name
-    SourceModule = "protomesh/terraform/ecs-cluster/capacity-provider"
+    Environment  = var.workspace_name
+    SourceModule = "protomesh/aws/terraform/ecs-application"
   }, var.tags)
 }
