@@ -3,8 +3,8 @@ module "capacity_providers" {
 
   for_each = var.capacity_providers
 
-  workspace = var.workspace
-  name      = each.key
+  workspace_name = var.workspace_name
+  name           = each.key
 
   cluster_name = var.name
   tags         = local.tags
