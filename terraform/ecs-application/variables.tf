@@ -121,6 +121,7 @@ variable "application_account" {
   type = object({
     iam_github_oidc_role_arn                   = string
     service_discovery_private_dns_namespace_id = string
+    workspace_private_domain                   = string
     sd_public_dns_certificate_arn              = string
     kms_key_arn                                = string
     vpc_id                                     = string

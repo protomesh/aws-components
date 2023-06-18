@@ -8,3 +8,9 @@ output "task_role_arn" {
     value = module.task_role.iam_role_arn
     description = "Task role arn"
 }
+
+
+output "application_private_domain" {
+    value = "${var.name}.${var.application_account.workspace_private_domain}"
+    description = "Domain for this service"
+}
