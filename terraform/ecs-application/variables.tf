@@ -45,6 +45,10 @@ variable "cluster" {
   type = object({
     cluster_name        = string
     task_execution_role = string
+    capacity_providers = map(object({
+      autoscaling_group_arn = string
+      name                  = string
+    }))
   })
   description = "ecs-cluster outputs of application account infrastructure state"
 }
