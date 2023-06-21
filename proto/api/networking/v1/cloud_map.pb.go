@@ -7,7 +7,7 @@
 package networkingv1
 
 import (
-	v1 "github.com/protomesh/aws-components/proto/api/types/v1"
+	v1 "github.com/protomesh/protomesh/proto/api/types/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
