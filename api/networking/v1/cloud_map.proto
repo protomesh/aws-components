@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package protomesh.aws.networking.v1;
+
+option go_package = "github.com/protomesh/aws-components/proto/api/networking/v1;networkingv1";
+
+import "api/types/v1/networking.proto";
+
+message ListInstanceSetsFromCloudMap {
+
+    message Input {
+        string namespace_id = 1;
+        string service_port_tag_key = 2;
+        string next_token = 3;
+    }
+
+    message Output {
+        repeated protomesh.types.v1.InstanceSet instance_sets = 1;
+        string next_token = 2;
+    }
+
+}
