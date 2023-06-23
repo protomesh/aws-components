@@ -169,7 +169,7 @@ data "aws_iam_policy_document" "generic_endpoint_policy" {
 }
 
 resource "aws_security_group" "vpc_tls" {
-  name_prefix = "${local.name}-vpc-tls"
+  name_prefix = "${var.name}-vpc-tls"
   description = "Allow TLS inbound traffic"
   vpc_id      = module.vpc.vpc_id
 

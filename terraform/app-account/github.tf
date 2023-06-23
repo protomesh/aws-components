@@ -79,5 +79,5 @@ module "iam_github_oidc_role" {
     module.iam_github_oidc_provider,
   ]
 
-  tags = local.tags
+  tags = var.tags
 }
