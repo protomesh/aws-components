@@ -42,3 +42,9 @@ variable "enable_dummy_record_a" {
   description = "Create a dummy record A at the root of public zone domain for cognito validation"
   default     = true
 }
+
+
+variable "tags" {
+    type        = map(string)
+    description = "Tags to be applied to resources"
+}
