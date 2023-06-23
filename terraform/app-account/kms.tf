@@ -4,7 +4,7 @@ module "account_kms" {
 
   computed_aliases = {
     env = {
-      name = var.workspace.env_name
+      name = var.name
     }
   }
 

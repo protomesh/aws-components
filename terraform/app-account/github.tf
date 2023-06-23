@@ -19,7 +19,7 @@ module "iam_github_oidc_policy" {
         "Effect" : "Allow",
         "Action" : "ssm:*",
         "Resource" : [
-          "arn:aws:ssm:*:${data.aws_caller_identity.current.account_id}:parameter/${var.workspace.env_name}/*",
+          "arn:aws:ssm:*:${data.aws_caller_identity.current.account_id}:parameter/${var.name}/*",
         ]
       },
       {
