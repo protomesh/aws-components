@@ -68,12 +68,12 @@ variable "ssh_key_name" {
   default     = null
 }
 
-variable "application_account" {
+variable "app_account" {
   type = object({
     vpc_id = string
     public_subnet_cidrs = list(string)
     private_subnet_cidrs = list(string)
     private_subnet_ids = list(string)
   })
-  description = "Workspace outputs of application-account infrastructure state"
+  description = "Workspace outputs of protomesh/aws-components/terraform/app-account infrastructure state"
 }

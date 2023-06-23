@@ -3,7 +3,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.0.0 |
 
 ## Providers
 
@@ -30,7 +30,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_application_account"></a> [application\_account](#input\_application\_account) | Workspace outputs of application-account infrastructure state | <pre>object({<br>    vpc_id = string<br>    public_subnet_cidrs = list(string)<br>    private_subnet_cidrs = list(string)<br>    private_subnet_ids = list(string)<br>  })</pre> | n/a | yes |
+| <a name="input_app_account"></a> [app\_account](#input\_app\_account) | Workspace outputs of protomesh/aws-components/terraform/app-account infrastructure state | <pre>object({<br>    vpc_id = string<br>    public_subnet_cidrs = list(string)<br>    private_subnet_cidrs = list(string)<br>    private_subnet_ids = list(string)<br>  })</pre> | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | ication-ecs module | `string` | n/a | yes |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Create security group according to cluster application | `bool` | `true` | no |
 | <a name="input_desired_capacity"></a> [desired\_capacity](#input\_desired\_capacity) | Only used to set initial node count, ignored on changes | `number` | `1` | no |
@@ -43,7 +43,6 @@
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | Additional security IDs to attach to cluster | `list(string)` | `[]` | no |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | SSH key name to use in the launch template | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to add the resources managed by this Terraform module | `map(string)` | `{}` | no |
-| <a name="input_workspace"></a> [workspace](#input\_workspace) | n/a | <pre>object({<br>    env_name = string<br>  })</pre> | n/a | yes |
 
 ## Outputs
 
