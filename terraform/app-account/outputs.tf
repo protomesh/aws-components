@@ -38,16 +38,6 @@ output "database_subnet_cidrs" {
   value       = module.vpc.database_subnets_cidr_blocks
 }
 
-output "kms_key_id" {
-  description = "Workspace KMS key id"
-  value       = module.account_kms.key_id
-}
-
-output "kms_key_arn" {
-  description = "Workspace KMS key arn"
-  value       = module.account_kms.key_arn
-}
-
 output "private_dns_namespace_id" {
   value       = aws_service_discovery_private_dns_namespace.private_dns.id
   description = "Private service discovery DNS namespace ID"

@@ -15,7 +15,6 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_account_kms"></a> [account\_kms](#module\_account\_kms) | terraform-aws-modules/kms/aws | ~> 1.0 |
 | <a name="module_acm_public_dns"></a> [acm\_public\_dns](#module\_acm\_public\_dns) | terraform-aws-modules/acm/aws | >= 4.3.2 |
 | <a name="module_acm_public_dns_us_east_1"></a> [acm\_public\_dns\_us\_east\_1](#module\_acm\_public\_dns\_us\_east\_1) | terraform-aws-modules/acm/aws | >= 4.3.2 |
 | <a name="module_records"></a> [records](#module\_records) | terraform-aws-modules/route53/aws//modules/records | >= 2.10.2 |
@@ -56,8 +55,6 @@
 | <a name="output_database_subnet_cidrs"></a> [database\_subnet\_cidrs](#output\_database\_subnet\_cidrs) | CIDRs of database subnets |
 | <a name="output_database_subnet_group_name"></a> [database\_subnet\_group\_name](#output\_database\_subnet\_group\_name) | Group name of database subnets |
 | <a name="output_database_subnet_ids"></a> [database\_subnet\_ids](#output\_database\_subnet\_ids) | IDs of database subnets |
-| <a name="output_kms_key_arn"></a> [kms\_key\_arn](#output\_kms\_key\_arn) | Workspace KMS key arn |
-| <a name="output_kms_key_id"></a> [kms\_key\_id](#output\_kms\_key\_id) | Workspace KMS key id |
 | <a name="output_private_dns_namespace_id"></a> [private\_dns\_namespace\_id](#output\_private\_dns\_namespace\_id) | Private service discovery DNS namespace ID |
 | <a name="output_private_dns_zone"></a> [private\_dns\_zone](#output\_private\_dns\_zone) | Service discovery private DNS name |
 | <a name="output_private_subnet_cidrs"></a> [private\_subnet\_cidrs](#output\_private\_subnet\_cidrs) | CIDRs of private subnets |
