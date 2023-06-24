@@ -3,11 +3,6 @@ variable "name" {
   description = "An user-friendly name to identify resources"
 }
 
-variable "allowed_github_oidc_subjects" {
-  type        = list(string)
-  description = "List of GitHub OIDC subjects allowed to access the application: org/repository:ref"
-}
-
 variable "availability_zones" {
   type        = list(string)
   description = "List of availability zones to configure network resources and high-availability"
@@ -45,6 +40,6 @@ variable "enable_dummy_record_a" {
 
 
 variable "tags" {
-    type        = map(string)
-    description = "Tags to be applied to resources"
+  type        = map(string)
+  description = "Tags to be applied to resources"
 }

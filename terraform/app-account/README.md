@@ -18,12 +18,9 @@
 | <a name="module_account_kms"></a> [account\_kms](#module\_account\_kms) | terraform-aws-modules/kms/aws | ~> 1.0 |
 | <a name="module_acm_public_dns"></a> [acm\_public\_dns](#module\_acm\_public\_dns) | terraform-aws-modules/acm/aws | >= 4.3.2 |
 | <a name="module_acm_public_dns_us_east_1"></a> [acm\_public\_dns\_us\_east\_1](#module\_acm\_public\_dns\_us\_east\_1) | terraform-aws-modules/acm/aws | >= 4.3.2 |
-| <a name="module_iam_github_oidc_policy"></a> [iam\_github\_oidc\_policy](#module\_iam\_github\_oidc\_policy) | terraform-aws-modules/iam/aws//modules/iam-policy | ~> 5.0 |
-| <a name="module_iam_github_oidc_provider"></a> [iam\_github\_oidc\_provider](#module\_iam\_github\_oidc\_provider) | terraform-aws-modules/iam/aws//modules/iam-github-oidc-provider | ~> 5.0 |
-| <a name="module_iam_github_oidc_role"></a> [iam\_github\_oidc\_role](#module\_iam\_github\_oidc\_role) | terraform-aws-modules/iam/aws//modules/iam-github-oidc-role | ~> 5.0 |
 | <a name="module_records"></a> [records](#module\_records) | terraform-aws-modules/route53/aws//modules/records | >= 2.10.2 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 3.0 |
-| <a name="module_vpc_endpoints"></a> [vpc\_endpoints](#module\_vpc\_endpoints) | terraform-aws-modules/vpc/aws//modules/vpc-endpoints | n/a |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 5.0 |
+| <a name="module_vpc_endpoints"></a> [vpc\_endpoints](#module\_vpc\_endpoints) | terraform-aws-modules/vpc/aws//modules/vpc-endpoints | ~> 5.0 |
 
 ## Resources
 
@@ -43,7 +40,6 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_github_oidc_subjects"></a> [allowed\_github\_oidc\_subjects](#input\_allowed\_github\_oidc\_subjects) | List of GitHub OIDC subjects allowed to access the application: org/repository:ref | `list(string)` | n/a | yes |
 | <a name="input_availability_zones"></a> [availability\_zones](#input\_availability\_zones) | List of availability zones to configure network resources and high-availability | `list(string)` | n/a | yes |
 | <a name="input_enable_dummy_record_a"></a> [enable\_dummy\_record\_a](#input\_enable\_dummy\_record\_a) | Create a dummy record A at the root of public zone domain for cognito validation | `bool` | `true` | no |
 | <a name="input_name"></a> [name](#input\_name) | An user-friendly name to identify resources | `string` | n/a | yes |
@@ -60,7 +56,6 @@
 | <a name="output_database_subnet_cidrs"></a> [database\_subnet\_cidrs](#output\_database\_subnet\_cidrs) | CIDRs of database subnets |
 | <a name="output_database_subnet_group_name"></a> [database\_subnet\_group\_name](#output\_database\_subnet\_group\_name) | Group name of database subnets |
 | <a name="output_database_subnet_ids"></a> [database\_subnet\_ids](#output\_database\_subnet\_ids) | IDs of database subnets |
-| <a name="output_iam_github_oidc_role_arn"></a> [iam\_github\_oidc\_role\_arn](#output\_iam\_github\_oidc\_role\_arn) | ARN of the GitHub role to be assumed |
 | <a name="output_kms_key_arn"></a> [kms\_key\_arn](#output\_kms\_key\_arn) | Workspace KMS key arn |
 | <a name="output_kms_key_id"></a> [kms\_key\_id](#output\_kms\_key\_id) | Workspace KMS key id |
 | <a name="output_private_dns_namespace_id"></a> [private\_dns\_namespace\_id](#output\_private\_dns\_namespace\_id) | Private service discovery DNS namespace ID |

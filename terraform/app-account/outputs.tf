@@ -38,11 +38,6 @@ output "database_subnet_cidrs" {
   value       = module.vpc.database_subnets_cidr_blocks
 }
 
-output "iam_github_oidc_role_arn" {
-  description = "ARN of the GitHub role to be assumed"
-  value       = module.iam_github_oidc_role.arn
-}
-
 output "kms_key_id" {
   description = "Workspace KMS key id"
   value       = module.account_kms.key_id
