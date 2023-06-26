@@ -42,7 +42,7 @@ module "nlb" {
     {
       port               = 443
       protocol           = "TLS"
-      certificate_arn    = var.app_account.sd_public_dns_certificate_arn
+      certificate_arn    = var.app_account.public_dns_certificate_arn
       target_group_index = 0
     }
   ]

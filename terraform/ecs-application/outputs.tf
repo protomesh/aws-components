@@ -9,6 +9,6 @@ output "task_role_arn" {
 }
 
 output "application_private_domain" {
-    value = "${var.name}.${var.app_account.workspace_private_domain}"
+    value = "${var.name}.${var.app_account.private_dns_zone}"
     description = "Domain for this service"
 }

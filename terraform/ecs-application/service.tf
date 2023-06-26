@@ -3,7 +3,7 @@ resource "aws_service_discovery_service" "sd" {
   name = var.name
 
   dns_config {
-    namespace_id = var.app_account.service_discovery_private_dns_namespace_id
+    namespace_id = var.app_account.private_dns_namespace_id
 
     dns_records {
       ttl  = 10
