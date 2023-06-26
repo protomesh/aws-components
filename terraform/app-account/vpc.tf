@@ -23,14 +23,6 @@ module "vpc" {
   tags = var.tags
 }
 
-locals {
-  vpc_endpoints_subnets = concat(
-    module.vpc.private_subnets,
-    module.vpc.public_subnets,
-    module.vpc.database_subnets,
-  )
-}
-
 module "vpc_endpoints" {
   source  = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
   version = "~> 5.0"
@@ -58,67 +50,67 @@ module "vpc_endpoints" {
       service             = "ssm"
       private_dns_enabled = true
       security_group_ids  = [aws_security_group.vpc_tls.id]
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
     ssmmessages = {
       service             = "ssmmessages"
       private_dns_enabled = true
       security_group_ids  = [aws_security_group.vpc_tls.id]
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
     lambda = {
       service             = "lambda"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
     ecs = {
       service             = "ecs"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
     ecs_telemetry = {
       create              = false
       service             = "ecs-telemetry"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
     ec2 = {
       service             = "ec2"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
       security_group_ids  = [aws_security_group.vpc_tls.id]
     },
     ec2messages = {
       service             = "ec2messages"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
       security_group_ids  = [aws_security_group.vpc_tls.id]
     },
     ecr_api = {
       service             = "ecr.api"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
       policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
     },
     ecr_dkr = {
       service             = "ecr.dkr"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
       policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
     },
     kms = {
       service             = "kms"
       private_dns_enabled = true
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
       security_group_ids  = [aws_security_group.vpc_tls.id]
     },
@@ -126,7 +118,7 @@ module "vpc_endpoints" {
       service             = "logs"
       private_dns_enabled = true
       security_group_ids  = [aws_security_group.vpc_tls.id]
-      subnet_ids          = local.vpc_endpoints_subnets
+      subnet_ids          = module.vpc.private_subnets
       policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
       tags                = var.tags
     },
