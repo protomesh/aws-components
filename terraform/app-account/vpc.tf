@@ -155,27 +155,7 @@ data "aws_security_group" "default" {
 
 data "aws_iam_policy_document" "dynamodb_endpoint_policy" {
   statement {
-    effect    = "Deny"
-    actions   = ["dynamodb:*"]
-    resources = ["*"]
-
-    principals {
-      type        = "*"
-      identifiers = ["*"]
-    }
-
-    condition {
-      test     = "StringNotEquals"
-      variable = "aws:sourceVpce"
-
-      values = [module.vpc.vpc_id]
-    }
-  }
-}
-
-data "aws_iam_policy_document" "generic_endpoint_policy" {
-  statement {
-    effect    = "Deny"
+    effect    = "Allow"
     actions   = ["*"]
     resources = ["*"]
 
@@ -184,13 +164,56 @@ data "aws_iam_policy_document" "generic_endpoint_policy" {
       identifiers = ["*"]
     }
 
-    condition {
-      test     = "StringNotEquals"
-      variable = "aws:SourceVpc"
-
-      values = [module.vpc.vpc_id]
-    }
   }
+  # statement {
+  #   effect    = "Deny"
+  #   actions   = ["dynamodb:*"]
+  #   resources = ["*"]
+
+  #   principals {
+  #     type        = "*"
+  #     identifiers = ["*"]
+  #   }
+
+  #   condition {
+  #     test     = "StringNotEquals"
+  #     variable = "aws:sourceVpce"
+
+  #     values = [module.vpc.vpc_id]
+  #   }
+  # }
+}
+
+data "aws_iam_policy_document" "generic_endpoint_policy" {
+  statement {
+    effect    = "Allow"
+    actions   = ["*"]
+    resources = ["*"]
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+  }
+
+  # statement {
+  #   effect    = "Deny"
+  #   actions   = ["*"]
+  #   resources = ["*"]
+
+  #   principals {
+  #     type        = "*"
+  #     identifiers = ["*"]
+  #   }
+
+  #   condition {
+  #     test     = "StringNotEquals"
+  #     variable = "aws:SourceVpc"
+
+  #     values = [module.vpc.vpc_id]
+  #   }
+  # }
 }
 
 resource "aws_security_group" "vpc_tls" {
