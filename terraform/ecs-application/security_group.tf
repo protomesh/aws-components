@@ -7,7 +7,7 @@ module "security_group" {
   use_name_prefix = true
   name            = "${local.base_name}-ecs-task"
 
-  vpc_id = var.application_account.vpc_id
+  vpc_id = var.app_account.vpc_id
 
   ingress_with_cidr_blocks = [ for v in var.ingress_with_cidr_blocks : merge(v, {
     cidr_blocks = join(",", compact(v.cidr_blocks))
