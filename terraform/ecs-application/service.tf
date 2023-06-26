@@ -1,5 +1,7 @@
 resource "aws_service_discovery_service" "sd" {
 
+  for_each = var.enable_service ? [1] : []
+
   name = var.name
 
   dns_config {
@@ -44,9 +46,15 @@ resource "aws_ecs_service" "service" {
     }
   }
 
-  service_registries {
+  dynamic "service_registries" {
 
-    registry_arn = aws_service_discovery_service.sd.arn
+    for_each = var.enable_service ? [1] : []
+
+    content {
+
+      registry_arn = aws_service_discovery_service[0].sd.arn
+
+    }
 
   }
 
