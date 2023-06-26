@@ -54,14 +54,6 @@ module "vpc_endpoints" {
       policy = data.aws_iam_policy_document.dynamodb_endpoint_policy.json
       tags   = var.tags
     },
-    logs = {
-      service             = "logs"
-      private_dns_enabled = true
-      security_group_ids  = [aws_security_group.vpc_tls.id]
-      subnet_ids          = local.vpc_endpoints_subnets
-      policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
-      tags                = var.tags
-    },
     ssm = {
       service             = "ssm"
       private_dns_enabled = true
@@ -129,6 +121,14 @@ module "vpc_endpoints" {
       subnet_ids          = local.vpc_endpoints_subnets
       tags                = var.tags
       security_group_ids  = [aws_security_group.vpc_tls.id]
+    },
+    logs = {
+      service             = "logs"
+      private_dns_enabled = true
+      security_group_ids  = [aws_security_group.vpc_tls.id]
+      subnet_ids          = local.vpc_endpoints_subnets
+      policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
+      tags                = var.tags
     },
     # codedeploy = {
     #   service             = "codedeploy"
