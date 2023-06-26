@@ -1,6 +1,6 @@
 resource "aws_service_discovery_service" "sd" {
 
-  for_each = var.enable_service ? [1] : []
+  count = var.enable_service ? 1 : 0
 
   name = var.name
 
