@@ -27,8 +27,8 @@ module "nlb" {
         enabled             = true
         interval            = 15
         protocol            = "HTTP"
-        path                = "/healthz"
-        port                = 8081
+        path                = var.service.health_check_path
+        port                = var.service.health_check_port
         healthy_threshold   = 3
         unhealthy_threshold = 3
         timeout             = 10
