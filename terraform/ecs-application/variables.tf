@@ -117,11 +117,9 @@ variable "egress_with_cidr_blocks" {
 
 variable "app_account" {
   type = object({
-    iam_github_oidc_role_arn   = string
     private_dns_namespace_id   = string
     private_dns_zone           = string
     public_dns_certificate_arn = string
-    kms_key_arn                = string
     vpc_id                     = string
   })
   description = "Workspace outputs of protomesh/aws-components/terraform/app-account infrastructure state"
