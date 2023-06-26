@@ -59,7 +59,7 @@ variable "task_iam_policy" {
 }
 
 variable "container_definitions" {
-  type        = list(map(any))
+  type        = any
   description = "AWS ECS container definitions for this application (you can use this module: https://github.com/terraform-aws-modules/terraform-aws-ecs/blob/master/modules/container-definition)."
 }
 
