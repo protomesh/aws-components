@@ -8,7 +8,7 @@ module "nlb" {
 
   load_balancer_type = "network"
 
-  vpc_id  = var.application_account.vpc_id
+  vpc_id  = var.app_account.vpc_id
   subnets = var.service.nlb_subnet_ids
 
   # Tem uma issue com o access log https://github.com/terraform-aws-modules/terraform-aws-alb#notes
@@ -42,7 +42,7 @@ module "nlb" {
     {
       port               = 443
       protocol           = "TLS"
-      certificate_arn    = var.application_account.sd_public_dns_certificate_arn
+      certificate_arn    = var.app_account.sd_public_dns_certificate_arn
       target_group_index = 0
     }
   ]
