@@ -57,7 +57,7 @@ module "asg" {
   wait_for_capacity_timeout = 0
   health_check_type         = "EC2"
 
-  vpc_zone_identifier = var.application_account.private_subnet_ids
+  vpc_zone_identifier = var.app_account.private_subnet_ids
 
   instance_refresh = {
     strategy = "Rolling"

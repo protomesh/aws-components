@@ -8,7 +8,7 @@ module "security_group" {
   use_name_prefix = true
   name            = local.base_name
 
-  vpc_id = var.application_account.vpc_id
+  vpc_id = var.app_account.vpc_id
 
   ingress_with_cidr_blocks = [
     {
@@ -16,7 +16,7 @@ module "security_group" {
       to_port     = 65535
       protocol    = "tcp"
       description = "Jumbpox from public"
-      cidr_blocks = join(",", var.application_account.public_subnet_cidrs)
+      cidr_blocks = join(",", var.app_account.public_subnet_cidrs)
     }
   ]
   egress_with_cidr_blocks = [
