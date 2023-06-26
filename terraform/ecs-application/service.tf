@@ -52,7 +52,7 @@ resource "aws_ecs_service" "service" {
 
     content {
 
-      registry_arn = aws_service_discovery_service[0].sd.arn
+      registry_arn = aws_service_discovery_service.sd[0].arn
 
     }
 
@@ -63,7 +63,7 @@ resource "aws_ecs_service" "service" {
     for_each = var.enable_network_lb ? [1] : []
 
     content {
-      target_group_arn = module.nlb_front_proxy[0].target_group_arns[0]
+      target_group_arn = module.nlb[0].target_group_arns[0]
       container_name   = var.service.nlb_target_container_name
       container_port   = var.service.nlb_target_container_port
     }
