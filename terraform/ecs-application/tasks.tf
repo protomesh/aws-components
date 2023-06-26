@@ -1,7 +1,7 @@
 resource "aws_ecs_task_definition" "main" {
   family                   = local.base_name
   requires_compatibilities = ["EC2"]
-  network_mode             = "awsvpc"
+  network_mode             = var.enable_service ? "awsvpc" : "none"
 
   task_role_arn      = module.task_role.iam_role_arn
   execution_role_arn = var.cluster.task_execution_role
