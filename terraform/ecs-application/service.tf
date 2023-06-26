@@ -19,8 +19,6 @@ resource "aws_service_discovery_service" "sd" {
 
 resource "aws_ecs_service" "service" {
 
-  count = var.enable_service ? 1 : 0
-
   name                              = local.base_name
   cluster                           = var.cluster.cluster_name
   task_definition                   = aws_ecs_task_definition.main.arn
@@ -35,10 +33,15 @@ resource "aws_ecs_service" "service" {
     type = "ECS"
   }
 
-  network_configuration {
-    subnets          = var.service.task_subnet_ids
-    security_groups  = var.create_security_group ? [module.security_group[0].security_group_id] : null
-    assign_public_ip = false
+  dynamic "network_configuration" {
+
+    for_each = var.enable_service ? [1] : []
+
+    content {
+      subnets          = var.service.task_subnet_ids
+      security_groups  = var.create_security_group ? [module.security_group[0].security_group_id] : null
+      assign_public_ip = false
+    }
   }
 
   service_registries {
