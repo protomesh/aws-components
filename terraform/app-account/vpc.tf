@@ -32,8 +32,10 @@ module "vpc_endpoints" {
 
   endpoints = {
     s3 = {
-      service = "s3"
-      tags    = { Name = "s3-vpc-endpoint" }
+      service            = "s3"
+      security_group_ids = [aws_security_group.vpc_tls.id]
+      subnet_ids         = module.vpc.private_subnets
+      tags               = var.tags
     },
     dynamodb = {
       service      = "dynamodb"
@@ -63,12 +65,14 @@ module "vpc_endpoints" {
     lambda = {
       service             = "lambda"
       private_dns_enabled = true
+      security_group_ids  = [aws_security_group.vpc_tls.id]
       subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
     ecs = {
       service             = "ecs"
       private_dns_enabled = true
+      security_group_ids  = [aws_security_group.vpc_tls.id]
       subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
@@ -76,6 +80,7 @@ module "vpc_endpoints" {
       create              = false
       service             = "ecs-telemetry"
       private_dns_enabled = true
+      security_group_ids  = [aws_security_group.vpc_tls.id]
       subnet_ids          = module.vpc.private_subnets
       tags                = var.tags
     },
@@ -97,6 +102,7 @@ module "vpc_endpoints" {
       service             = "ecr.api"
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
+      security_group_ids  = [aws_security_group.vpc_tls.id]
       tags                = var.tags
       policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
     },
@@ -104,6 +110,7 @@ module "vpc_endpoints" {
       service             = "ecr.dkr"
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
+      security_group_ids  = [aws_security_group.vpc_tls.id]
       tags                = var.tags
       policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
     },
