@@ -82,8 +82,8 @@ resource "aws_ecs_service" "service" {
     content {
 
       registry_arn   = service_registries.value["service_discovery_arn"]
-      container_name = lookup(service_registries.value, "container_name", null)
-      container_port = lookup(service_registries.value, "container_port", null)
+      container_name = lookup(service_registries.value, "container_name", 0)
+      container_port = lookup(service_registries.value, "container_port", 0)
 
     }
 
