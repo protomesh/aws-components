@@ -1,7 +1,11 @@
+locals {
+  network_mode = var.enable_service ? coalesce(var.service.network_mode, "awsvpc") : coalesce(var.service.network_mode, "none")
+}
+
 resource "aws_ecs_task_definition" "main" {
   family                   = local.base_name
   requires_compatibilities = ["EC2"]
-  network_mode             = var.enable_service ? "awsvpc" : "none"
+  network_mode             = local.network_mode
 
   task_role_arn      = module.task_role.iam_role_arn
   execution_role_arn = var.cluster.task_execution_role

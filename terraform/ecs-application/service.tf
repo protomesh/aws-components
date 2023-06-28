@@ -48,7 +48,7 @@ resource "aws_ecs_service" "service" {
 
   dynamic "service_registries" {
 
-    for_each = var.enable_service ? [1] : []
+    for_each = var.network_mode != "none" ? [1] : []
 
     content {
 

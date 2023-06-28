@@ -77,6 +77,7 @@ variable "service" {
     task_subnet_ids           = list(string)
     health_check_path         = optional(string)
     health_check_port         = optional(number)
+    network_mode              = optional(string)
   })
   description = "Service configuration"
   default = {
