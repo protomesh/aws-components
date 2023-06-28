@@ -73,7 +73,7 @@ resource "aws_ecs_service" "service" {
 
   dynamic "service_registries" {
 
-    for_each = local.network_mode == "none" ? [] : local.network_mode == "awspvc" ? [{
+    for_each = local.network_mode == "none" ? [] : local.network_mode == "awsvpc" ? [{
       service_discovery_arn = aws_service_discovery_service.sd[0].arn
       }] : [for k, v in var.service_registries : merge({
         service_discovery_arn = aws_service_discovery_service.sd_container[k].arn
