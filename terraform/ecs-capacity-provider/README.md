@@ -34,6 +34,7 @@
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | ication-ecs module | `string` | n/a | yes |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Create security group according to cluster application | `bool` | `true` | no |
 | <a name="input_desired_capacity"></a> [desired\_capacity](#input\_desired\_capacity) | Only used to set initial node count, ignored on changes | `number` | `1` | no |
+| <a name="input_egress_with_cidr_blocks"></a> [egress\_with\_cidr\_blocks](#input\_egress\_with\_cidr\_blocks) | Egress rules to add to the security group | <pre>list(object({<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>    description = optional(string)<br>    cidr_blocks = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_image_id"></a> [image\_id](#input\_image\_id) | The AMI from which to launch the instance (leave empty to use Amazon recommended image) | `string` | `null` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | Instance type of the capacity provider | `string` | `"t3.micro"` | no |
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | Maximum cluster instance count | `number` | `2` | no |

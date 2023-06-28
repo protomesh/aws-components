@@ -4,7 +4,7 @@ variable "name" {
 }
 
 variable "cloudwatch_log_group_retention_in_days" {
-  type = string
+  type        = string
   description = "Cluster log group retention days"
 }
 
@@ -43,6 +43,13 @@ variable "capacity_providers" {
       desired_capacity      = optional(number)
       ssh_key_name          = optional(string)
     })
+    egress_with_cidr_blocks = optional(list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      description = optional(string)
+      cidr_blocks = list(string)
+    })))
   }))
   description = "Capacity providers"
 }

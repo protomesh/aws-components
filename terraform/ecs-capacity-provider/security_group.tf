@@ -19,7 +19,7 @@ module "security_group" {
       cidr_blocks = join(",", var.app_account.public_subnet_cidrs)
     }
   ]
-  egress_with_cidr_blocks = [
+  egress_with_cidr_blocks = concat([
     {
       from_port   = 443
       to_port     = 443
@@ -27,7 +27,7 @@ module "security_group" {
       description = "TLS endpoints anywhere"
       cidr_blocks = "0.0.0.0/0"
     },
-  ]
+  ], var.egress_with_cidr_blocks)
 
   tags = local.tags
 }

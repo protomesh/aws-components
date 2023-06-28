@@ -77,3 +77,15 @@ variable "app_account" {
   })
   description = "Workspace outputs of protomesh/aws-components/terraform/app-account infrastructure state"
 }
+
+variable "egress_with_cidr_blocks" {
+  type = list(object({
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    description = optional(string)
+    cidr_blocks = list(string)
+  }))
+  description = "Egress rules to add to the security group"
+  default     = []
+}
