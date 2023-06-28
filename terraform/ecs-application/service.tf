@@ -1,8 +1,33 @@
 resource "aws_service_discovery_service" "sd" {
 
-  count = local.network_mode != "none" ? 1 : 0
+  count = local.network_mode == "awsvpc" ? 1 : 0
 
   name = var.name
+
+  dns_config {
+    namespace_id = var.app_account.private_dns_namespace_id
+
+    dns_records {
+      ttl  = 10
+      type = "A"
+    }
+
+    routing_policy = "MULTIVALUE"
+  }
+
+  tags = local.tags
+
+}
+
+locals {
+  sd_container = local.network_mode != "none" && local.network_mode != "awsvpc" ? { for k, v in var.service_registries : v.container_name => v } : {}
+}
+
+resource "aws_service_discovery_service" "sd_container" {
+
+  for_each = local.sd_container
+
+  name = "${var.name}-${each.key}"
 
   dns_config {
     namespace_id = var.app_account.private_dns_namespace_id
@@ -48,11 +73,17 @@ resource "aws_ecs_service" "service" {
 
   dynamic "service_registries" {
 
-    for_each = local.network_mode != "none" ? [1] : []
+    for_each = local.network_mode == "none" ? [] : local.network_mode == "awspvc" ? [{
+      service_discovery_arn = aws_service_discovery_service.sd[0].arn
+      }] : [for k, v in var.service_registries : merge({
+        service_discovery_arn = aws_service_discovery_service.sd_container[k].arn
+    }, local.sd_container)]
 
     content {
 
-      registry_arn = aws_service_discovery_service.sd[0].arn
+      registry_arn   = service_registries.value["service_discovery_arn"]
+      container_name = lookup(service_registries.value, "container_name", null)
+      container_port = lookup(service_registries.value, "container_port", null)
 
     }
 

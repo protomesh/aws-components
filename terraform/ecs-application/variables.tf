@@ -69,6 +69,15 @@ variable "enable_network_lb" {
   default     = false
 }
 
+variable "service_registries" {
+  type = list(object({
+    container_port = number
+    container_name = string
+  }))
+  description = "Service registries to add to the service"
+  default     = []
+}
+
 variable "service" {
   type = object({
     nlb_target_container_name = optional(string)
@@ -93,6 +102,7 @@ variable "enable_service" {
   description = "value to enable or disable the creation of ECS service"
   default     = true
 }
+
 
 variable "ingress_with_cidr_blocks" {
   type = list(object({
