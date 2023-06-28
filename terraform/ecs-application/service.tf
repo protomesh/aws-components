@@ -1,6 +1,6 @@
 resource "aws_service_discovery_service" "sd" {
 
-  count = var.enable_service ? 1 : 0
+  count = local.network_mode != "none" ? 1 : 0
 
   name = var.name
 
