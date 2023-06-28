@@ -27,7 +27,9 @@ module "security_group" {
       description = "TLS endpoints anywhere"
       cidr_blocks = "0.0.0.0/0"
     },
-  ], var.egress_with_cidr_blocks)
+  ], [for k, v in var.egress_with_cidr_blocks : merge(v, {
+    cidr_blocks = join(",", v.cidr_blocks)
+  })])
 
   tags = local.tags
 }
