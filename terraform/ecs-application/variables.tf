@@ -74,7 +74,7 @@ variable "service" {
     nlb_target_container_name = optional(string)
     nlb_target_container_port = optional(number)
     nlb_subnet_ids            = optional(list(string))
-    task_subnet_ids           = list(string)
+    task_subnet_ids           = optional(list(string))
     health_check_path         = optional(string)
     health_check_port         = optional(number)
     network_mode              = optional(string)
