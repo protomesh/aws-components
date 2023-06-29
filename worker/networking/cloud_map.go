@@ -55,7 +55,12 @@ func (ap *ActivityPack[D]) ListInstanceSetsFromCloudMap(ctx context.Context, inp
 			tags[aws.ToString(tag.Key)] = aws.ToString(tag.Value)
 		}
 
-		port, err := strconv.ParseInt(tags[input.ServicePortTagKey], 10, 32)
+		portValue, ok := tags[input.ServicePortTagKey]
+		if !ok {
+			continue
+		}
+
+		port, err := strconv.ParseInt(portValue, 10, 32)
 		if err != nil {
 			return nil, err
 		}
