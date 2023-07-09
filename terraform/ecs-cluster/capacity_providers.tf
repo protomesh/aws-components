@@ -18,6 +18,7 @@ module "capacity_providers" {
   desired_capacity        = lookup(each.value["autoscaling_group"], "desired_capacity", 1)
   ssh_key_name            = lookup(each.value["autoscaling_group"], "ssh_key_name", null)
   egress_with_cidr_blocks = lookup(each.value, "egress_with_cidr_blocks", [])
+  ingress_with_cidr_blocks = lookup(each.value, "ingress_with_cidr_blocks", [])
 
   app_account = var.app_account
 

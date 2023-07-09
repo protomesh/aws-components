@@ -10,15 +10,10 @@ module "security_group" {
 
   vpc_id = var.app_account.vpc_id
 
-  ingress_with_cidr_blocks = [
-    {
-      from_port   = 0
-      to_port     = 65535
-      protocol    = "tcp"
-      description = "Jumbpox from public"
-      cidr_blocks = join(",", var.app_account.public_subnet_cidrs)
-    }
-  ]
+  ingress_with_cidr_blocks = [for k, v in var.ingress_with_cidr_blocks : merge(v, {
+    cidr_blocks = join(",", v.cidr_blocks)
+  })]
+
   egress_with_cidr_blocks = concat([
     {
       from_port   = 443

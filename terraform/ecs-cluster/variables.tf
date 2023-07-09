@@ -43,6 +43,13 @@ variable "capacity_providers" {
       desired_capacity      = optional(number)
       ssh_key_name          = optional(string)
     })
+    ingress_with_cidr_blocks = optional(list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      description = optional(string)
+      cidr_blocks = list(string)
+    })))
     egress_with_cidr_blocks = optional(list(object({
       from_port   = number
       to_port     = number
