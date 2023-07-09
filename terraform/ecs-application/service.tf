@@ -76,7 +76,7 @@ resource "aws_ecs_service" "service" {
     for_each = local.network_mode == "none" ? [] : local.network_mode == "awsvpc" ? [{
       service_discovery_arn = aws_service_discovery_service.sd[0].arn
       }] : [for k, v in var.service_registries : merge({
-        service_discovery_arn = aws_service_discovery_service.sd_container[k].arn
+        service_discovery_arn = aws_service_discovery_service.sd_container[v.container_name].arn
     }, local.sd_container[v.container_name])]
 
     content {
