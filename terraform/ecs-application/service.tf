@@ -77,7 +77,7 @@ resource "aws_ecs_service" "service" {
       service_discovery_arn = aws_service_discovery_service.sd[0].arn
       }] : [for k, v in var.service_registries : merge({
         service_discovery_arn = aws_service_discovery_service.sd_container[k].arn
-    }, local.sd_container)]
+    }, local.sd_container[v.container_name])]
 
     content {
 
