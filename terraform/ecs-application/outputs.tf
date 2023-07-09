@@ -14,7 +14,7 @@ output "application_private_domain" {
 }
 
 locals {
-  service_private_domains = [for k, v in local.sd_container : "${var.name}-${k}.${var.app_account.private_dns_zone}"]
+  service_private_domains = {for k, v in local.sd_container : k => "${var.name}-${k}.${var.app_account.private_dns_zone}"}
 }
 
 output "service_private_domains" {
