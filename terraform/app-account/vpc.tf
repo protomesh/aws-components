@@ -129,6 +129,18 @@ module "vpc_endpoints" {
       policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
       tags                = var.tags
     },
+    sns = {
+      service    = "sns"
+      subnet_ids = module.vpc.private_subnets
+      tags       = var.tags
+    },
+    sqs = {
+      service             = "sqs"
+      private_dns_enabled = true
+      security_group_ids  = [aws_security_group.vpc_tls.id]
+      subnet_ids          = module.vpc.private_subnets
+      tags                = var.tags
+    },
     # codedeploy = {
     #   service             = "codedeploy"
     #   private_dns_enabled = true
