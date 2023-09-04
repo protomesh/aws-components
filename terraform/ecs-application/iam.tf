@@ -44,6 +44,7 @@ module "task_role" {
   create_role = true
 
   custom_role_trust_policy = data.aws_iam_policy_document.trust_policy.json
+  create_custom_role_trust_policy = true
 
   max_session_duration = 3600
   role_path            = "/terraform/"
