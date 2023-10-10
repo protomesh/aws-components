@@ -47,6 +47,7 @@
 | <a name="input_enable_network_lb"></a> [enable\_network\_lb](#input\_enable\_network\_lb) | Enables network load balancer to expose the service (service must be enabled) | `bool` | `false` | no |
 | <a name="input_enable_service"></a> [enable\_service](#input\_enable\_service) | value to enable or disable the creation of ECS service | `bool` | `true` | no |
 | <a name="input_health_check_grace_period_seconds"></a> [health\_check\_grace\_period\_seconds](#input\_health\_check\_grace\_period\_seconds) | Seconds to wait before check the health of a new task | `number` | `60` | no |
+| <a name="input_ignore_desired_count"></a> [ignore\_desired\_count](#input\_ignore\_desired\_count) | Ignore changes on desired count | `bool` | `true` | no |
 | <a name="input_ingress_with_cidr_blocks"></a> [ingress\_with\_cidr\_blocks](#input\_ingress\_with\_cidr\_blocks) | Ingress rules to add to the security group | <pre>list(object({<br>    from_port   = number<br>    to_port     = number<br>    protocol    = string<br>    description = optional(string)<br>    cidr_blocks = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_log_retention_in_days"></a> [log\_retention\_in\_days](#input\_log\_retention\_in\_days) | Days for log retention in CW, must be one of [0 1 3 5 7 14 30 60 90 120 150 180 365 400 545 731 1827 2192 2557 2922 3288 3653] | `number` | `7` | no |
 | <a name="input_name"></a> [name](#input\_name) | An user-friendly name to identify resources | `string` | n/a | yes |
@@ -61,5 +62,6 @@
 |------|-------------|
 | <a name="output_application_private_domain"></a> [application\_private\_domain](#output\_application\_private\_domain) | Domain for this service |
 | <a name="output_nlb_dns_name"></a> [nlb\_dns\_name](#output\_nlb\_dns\_name) | NLB for DNS name |
+| <a name="output_service_private_domains"></a> [service\_private\_domains](#output\_service\_private\_domains) | Domain for this service |
 | <a name="output_task_role_arn"></a> [task\_role\_arn](#output\_task\_role\_arn) | Task role arn |
 <!-- END_TF_DOCS -->
