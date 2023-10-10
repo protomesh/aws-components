@@ -112,9 +112,5 @@ resource "aws_ecs_service" "service" {
 
   }
 
-  lifecycle {
-    ignore_changes = var.ignore_desired_count ? [] : [desired_count]
-  }
-
   tags = local.tags
 }
