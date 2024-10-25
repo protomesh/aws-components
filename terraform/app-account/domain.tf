@@ -29,10 +29,12 @@ module "records" {
 
 module "acm_public_dns" {
   source  = "terraform-aws-modules/acm/aws"
-  version = ">= 4.3.2"
+  version = ">= 5.1.1"
 
   domain_name  = var.public_dns_zone
   zone_id      = data.aws_route53_zone.public_dns.zone_id
+
+  validation_method = "DNS"
 
   subject_alternative_names = [
     "*.${var.public_dns_zone}"
@@ -46,7 +48,7 @@ module "acm_public_dns" {
 
 module "acm_public_dns_us_east_1" {
   source  = "terraform-aws-modules/acm/aws"
-  version = ">= 4.3.2"
+  version = ">= 5.1.1"
 
   providers = {
     aws = aws.us_east_1
@@ -54,6 +56,8 @@ module "acm_public_dns_us_east_1" {
 
   domain_name  = var.public_dns_zone
   zone_id      = data.aws_route53_zone.public_dns.zone_id
+
+  validation_method = "DNS"
 
   subject_alternative_names = [
     "*.${var.public_dns_zone}"
